@@ -122,7 +122,7 @@ export default async function PlaceDetailPage({ params }: Props) {
           <div className="mt-12">
             <h2 className="text-xl font-black text-gray-900 dark:text-white mb-5">More {p.category}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {related.map(r => (
+              {related.map((r: any) => (
                 <Link key={r.id} href={`/places/${r.id}`} className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-shadow group">
                   <div className="h-32 bg-gray-100 dark:bg-gray-800 overflow-hidden">
                     {r.imageUrl

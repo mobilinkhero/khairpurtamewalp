@@ -191,7 +191,7 @@ export default function SearchClient() {
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {filtered.map(r => (
+                {filtered.map((r: any) => (
                   <Link key={`${r.type}-${r.id}`} href={r.href}
                     className="group bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all hover:-translate-y-0.5">
                     <div className="h-36 bg-gray-100 dark:bg-gray-800 overflow-hidden relative">

@@ -103,7 +103,7 @@ export default async function NewsDetailPage({ params }: Props) {
           <div>
             <h2 className="text-xl font-black text-gray-900 dark:text-white mb-5">More in {n.category}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {related.map(r => (
+              {related.map((r: any) => (
                 <Link key={r.id} href={`/news/${r.id}`} className="group block bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-shadow">
                   {r.imageUrl && <div className="h-32 overflow-hidden"><img src={r.imageUrl} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" /></div>}
                   <div className="p-4">
