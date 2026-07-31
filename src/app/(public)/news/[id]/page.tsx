@@ -88,7 +88,7 @@ export default async function NewsDetailPage({ params }: Props) {
 
         {/* Article content */}
         <div className="prose prose-gray dark:prose-invert max-w-none mb-10">
-          {n.content.split('\n').map((para, i) => para.trim() && (
+          {n.content.split('\n').map((para: string, i) => para.trim() && (
             <p key={i} className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4 text-base">{para}</p>
           ))}
         </div>
