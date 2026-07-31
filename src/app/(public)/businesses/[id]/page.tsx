@@ -162,7 +162,7 @@ export default async function BusinessDetailPage({ params }: Props) {
           <div className="mt-12">
             <h2 className="text-xl font-black text-gray-900 dark:text-white mb-5">More in {b.category}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {related.map(r => {
+              {related.map((r: any) => {
                 let rTags: string[] = []
                 try { rTags = JSON.parse(r.tags) } catch {}
                 return (
