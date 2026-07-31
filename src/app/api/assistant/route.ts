@@ -2,23 +2,23 @@ import { NextRequest } from 'next/server'
 import { prisma } from '@/lib/db'
 import { apiSuccess, apiError } from '@/lib/utils'
 
-const keywords: Record<string, { type: string; field: string; label: string }> = {
-  restaurant: { type: 'business', field: 'category', label: 'Restaurant' },
-  'کھانا': { type: 'business', field: 'category', label: 'Restaurant' },
-  hospital: { type: 'business', field: 'category', label: 'Hospital' },
-  'ہسپتال': { type: 'business', field: 'category', label: 'Hospital' },
-  doctor: { type: 'business', field: 'category', label: 'Doctor' },
-  'ڈاکٹر': { type: 'business', field: 'category', label: 'Doctor' },
-  pharmacy: { type: 'business', field: 'category', label: 'Pharmacy' },
-  'دواخانہ': { type: 'business', field: 'category', label: 'Pharmacy' },
-  school: { type: 'business', field: 'category', label: 'School' },
-  'اسکول': { type: 'business', field: 'category', label: 'School' },
-  mosque: { type: 'place', field: 'category', label: 'Mosque' },
-  'مسجد': { type: 'place', field: 'category', label: 'Mosque' },
-  park: { type: 'place', field: 'category', label: 'Park' },
-  'پارک': { type: 'place', field: 'category', label: 'Park' },
-  market: { type: 'business', field: 'category', label: 'Market' },
-  'بازار': { type: 'business', field: 'category', label: 'Market' },
+const keywords: Record<string, { type: string; field: string; value: string }> = {
+  restaurant: { type: 'business', field: 'category', value: 'Restaurant' },
+  'کھانا': { type: 'business', field: 'category', value: 'Restaurant' },
+  hospital: { type: 'business', field: 'category', value: 'Hospital' },
+  'ہسپتال': { type: 'business', field: 'category', value: 'Hospital' },
+  doctor: { type: 'business', field: 'category', value: 'Doctor' },
+  'ڈاکٹر': { type: 'business', field: 'category', value: 'Doctor' },
+  pharmacy: { type: 'business', field: 'category', value: 'Pharmacy' },
+  'دواخانہ': { type: 'business', field: 'category', value: 'Pharmacy' },
+  school: { type: 'business', field: 'category', value: 'School' },
+  'اسکول': { type: 'business', field: 'category', value: 'School' },
+  mosque: { type: 'place', field: 'category', value: 'Mosque' },
+  'مسجد': { type: 'place', field: 'category', value: 'Mosque' },
+  park: { type: 'place', field: 'category', value: 'Park' },
+  'پارک': { type: 'place', field: 'category', value: 'Park' },
+  market: { type: 'business', field: 'category', value: 'Market' },
+  'بازار': { type: 'business', field: 'category', value: 'Market' },
 }
 
 export async function POST(req: NextRequest) {
