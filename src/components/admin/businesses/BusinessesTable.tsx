@@ -131,7 +131,7 @@ export default function BusinessesTable() {
         {/* Table header */}
         <div className="grid grid-cols-[40px_2fr_1fr_1fr_1fr_1fr_80px] gap-4 px-5 py-3.5 bg-gray-50 border-b border-gray-100 text-xs font-bold text-gray-500 uppercase tracking-wider">
           <button onClick={toggleAll} className="flex items-center justify-center">
-            <input type="checkbox" checked={data?.data?.length > 0 && selected.size === data.data.length}
+            <input type="checkbox" checked={(data?.data?.length ?? 0) > 0 && selected.size === (data?.data?.length ?? 0)}
               readOnly className="w-4 h-4 rounded border-gray-300 text-green-600 focus:ring-green-500 cursor-pointer" />
           </button>
           <span>Business</span>
