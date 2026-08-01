@@ -39,12 +39,12 @@ export async function POST(req: NextRequest) {
     if (matched) {
       if (matched.type === 'business') {
         results = await prisma.business.findMany({
-          where: { category: { contains: matched.value, mode: 'insensitive' }, isActive: true },
+          where: { category: { contains: matched.value }, isActive: true },
           take: 5,
         })
       } else {
         results = await prisma.place.findMany({
-          where: { category: { contains: matched.value, mode: 'insensitive' }, isActive: true },
+          where: { category: { contains: matched.value }, isActive: true },
           take: 5,
         })
       }
