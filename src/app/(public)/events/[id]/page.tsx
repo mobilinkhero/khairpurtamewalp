@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { format } from 'date-fns'
 import ShareButtons from '@/components/public/ShareButtons'
 
-export const revalidate = 60
+export const dynamic = 'force-dynamic'
 interface Props { params: Promise<{ id: string }> }
 
 async function getEvent(id: string) {

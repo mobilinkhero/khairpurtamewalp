@@ -5,7 +5,7 @@ import Link from 'next/link'
 import BusinessMap from '@/components/public/BusinessMap'
 import ShareButtons from '@/components/public/ShareButtons'
 
-export const revalidate = 60
+export const dynamic = 'force-dynamic'
 
 interface Props { params: Promise<{ id: string }> }
 

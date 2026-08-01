@@ -5,8 +5,7 @@ import Link from 'next/link'
 import ShareButtons from '@/components/public/ShareButtons'
 import BusinessMap from '@/components/public/BusinessMap'
 
-export const revalidate = 60
-
+export const dynamic = 'force-dynamic'
 interface Props { params: Promise<{ id: string }> }
 
 async function getBusiness(id: string) {
