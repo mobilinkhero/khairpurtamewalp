@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url      = "mysql://u807512962_kpt:Pakisyan%406752321312@srv1666.hstgr.io:3306/u807512962_kpt"
 }
 
 // ── Admin Users ───────────────────────────────────────────────────────────────
