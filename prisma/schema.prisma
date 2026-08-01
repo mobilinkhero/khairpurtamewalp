@@ -222,7 +222,7 @@ model ClaimRequest {
   otp         String
   otpExpiresAt DateTime
   status      String   @default("pending") // pending | verified | approved | rejected
-  note        String   @db.Text
+  note        String?  @db.Text
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
