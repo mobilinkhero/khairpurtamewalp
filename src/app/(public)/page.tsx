@@ -1,4 +1,4 @@
-export const revalidate = 60
+export const dynamic = 'force-dynamic'
 
 import HeroSection from '@/components/public/HeroSection'
 import FeaturedBusinesses from '@/components/public/FeaturedBusinesses'
