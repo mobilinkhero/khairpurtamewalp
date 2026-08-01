@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
     } else {
       // Fallback: search businesses by name
       results = await prisma.business.findMany({
-        where: { name: { contains: query, mode: 'insensitive' }, isActive: true },
+        where: { name: { contains: query }, isActive: true },
         take: 5,
       })
       response = results.length > 0
