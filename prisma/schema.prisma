@@ -4,8 +4,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = "mysql://u807512962_kpt:Pakisyan%406752321312@srv1666.hstgr.io:3306/u807512962_kpt"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 // ── Admin Users ───────────────────────────────────────────────────────────────
@@ -31,7 +32,7 @@ model Business {
   id           String   @id @default(uuid())
   name         String
   category     String
-  description  String   @db.Text
+  description  String
   address      String
   phone        String
   imageUrl     String
@@ -40,7 +41,7 @@ model Business {
   isOpen       Boolean  @default(true)
   workingHours String
   isFeatured   Boolean  @default(false)
-  tags         String   @db.Text  // JSON array stored as string
+  tags         String   // JSON array stored as string
   lat          Float
   lng          Float
   isActive     Boolean  @default(true)
@@ -55,10 +56,10 @@ model Place {
   id          String   @id @default(uuid())
   name        String
   category    String
-  description String   @db.Text
+  description String
   address     String
   imageUrl    String
-  facilities  String   @db.Text  // JSON array
+  facilities  String   // JSON array
   isFeatured  Boolean  @default(false)
   phone       String
   lat         Float
@@ -73,17 +74,17 @@ model Place {
 
 // ── News ──────────────────────────────────────────────────────────────────────
 model News {
-  id          String   @id @default(uuid())
+  id          String    @id @default(uuid())
   title       String
-  summary     String   @db.Text
-  content     String   @db.LongText
+  summary     String
+  content     String
   imageUrl    String
   category    String
   author      String
-  isPublished Boolean  @default(false)
+  isPublished Boolean   @default(false)
   publishedAt DateTime?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   @@map("news")
 }
@@ -92,7 +93,7 @@ model News {
 model Event {
   id          String   @id @default(uuid())
   title       String
-  description String   @db.Text
+  description String
   imageUrl    String
   date        DateTime
   time        String
@@ -110,7 +111,7 @@ model Event {
 model AppSetting {
   id        String   @id @default(uuid())
   key       String   @unique
-  value     String   @db.LongText
+  value     String
   label     String
   type      String   @default("text")   // text | image | boolean | number
   group     String   @default("general")
@@ -139,7 +140,7 @@ model Category {
 model MediaFile {
   id          String   @id @default(uuid())
   filename    String
-  url         String   @db.Text
+  url         String
   mimeType    String   @default("image/jpeg")
   size        Int      @default(0)
   alt         String   @default("")
@@ -149,20 +150,20 @@ model MediaFile {
   @@map("media_files")
 }
 
-// ── Banners ───────────────────────────────────────────────────────────────────
+// ── Banners ───────────────────────────────────────────────name────────────────
 model Banner {
-  id          String   @id @default(uuid())
+  id          String    @id @default(uuid())
   title       String
-  subtitle    String   @default("")
-  imageUrl    String   @db.Text
-  linkUrl     String   @default("")
-  linkLabel   String   @default("")
-  type        String   @default("info")   // info | warning | emergency | promo
-  isActive    Boolean  @default(true)
-  sortOrder   Int      @default(0)
+  subtitle    String    @default("")
+  imageUrl    String
+  linkUrl     String    @default("")
+  linkLabel   String    @default("")
+  type        String    @default("info")   // info | warning | emergency | promo
+  isActive    Boolean   @default(true)
+  sortOrder   Int       @default(0)
   expiresAt   DateTime?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   @@map("banners")
 }
@@ -172,7 +173,7 @@ model Testimonial {
   id          String   @id @default(uuid())
   name        String
   role        String   @default("")
-  content     String   @db.Text
+  content     String
   rating      Int      @default(5)
   avatarUrl   String   @default("")
   isApproved  Boolean  @default(false)
@@ -186,8 +187,8 @@ model Testimonial {
 // ── FAQs ──────────────────────────────────────────────────────────────────────
 model FAQ {
   id          String   @id @default(uuid())
-  question    String   @db.Text
-  answer      String   @db.LongText
+  question    String
+  answer      String
   category    String   @default("General")
   isPublished Boolean  @default(true)
   sortOrder   Int      @default(0)
@@ -206,7 +207,7 @@ model ActivityLog {
   entity      String   // business | place | news | event | banner | faq | user | settings
   entityId    String   @default("")
   entityName  String   @default("")
-  detail      String   @db.Text
+  detail      String
   ipAddress   String   @default("")
   createdAt   DateTime @default(now())
 
@@ -215,17 +216,17 @@ model ActivityLog {
 
 // ── Business Claim Requests ───────────────────────────────────────────────────
 model ClaimRequest {
-  id          String   @id @default(uuid())
-  businessId  String
+  id           String   @id @default(uuid())
+  businessId   String
   businessName String
-  claimerName String
+  claimerName  String
   claimerPhone String
-  otp         String
+  otp          String
   otpExpiresAt DateTime
-  status      String   @default("pending") // pending | verified | approved | rejected
-  note        String?  @db.Text
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  status       String   @default("pending") // pending | verified | approved | rejected
+  note         String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
   @@map("claim_requests")
 }

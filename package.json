@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "User website + Admin Panel + REST API — Khairpur Tamewali",
   "private": true,
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
